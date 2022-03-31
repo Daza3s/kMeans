@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kMeans</title>
+    <script src="kMeans.js" type="module"></script>
+</head>
+<body>
+    <canvas id="canvas1" width="300" height="300" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas2" width="300" height="300" style="border: 1px solid black;"></canvas>
+    <script type="module">
+        import * as kMeans from "./kMeans.js"
+        kMeans.createData(500, 100);
+        kMeans.renderData("canvas1");
+
+        let clustering = kMeans.bestCluster();
+        kMeans.renderSet("canvas2", clustering.cluster[0], "red");
+        kMeans.renderSet("canvas2", clustering.cluster[1], "blue");
+        kMeans.renderSet("canvas2", clustering.cluster[2], "yellow");
+        kMeans.renderSet("canvas2", clustering.centroids, "black", 10);
+    </script>
+</body>
+</html>
